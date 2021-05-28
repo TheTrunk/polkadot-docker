@@ -8,8 +8,12 @@ RUN apt-get update \
 
 RUN curl -O https://github.com/paritytech/polkadot/releases/download/${VERSION}/polkadot
 
-RUN chmod 755 /polkadot/polkadot
+COPY runpolkadot.sh .
+
+RUN chmod 755 polkadot runpolkadot.sh
+
+RUN mkdir /chaindata
 
 EXPOSE 30333 9933 9944
 
-CMD /polkadot/polkadot
+CMD ./runpolkadot.sh
