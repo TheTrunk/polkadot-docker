@@ -3,10 +3,10 @@ WORKDIR /polkadot
 ARG VERSION=v0.9.3
 
 RUN apt-get update \
-    && apt-get install -y curl \
+    && apt-get install -y wget \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -O https://github.com/paritytech/polkadot/releases/download/${VERSION}/polkadot
+RUN wget https://github.com/paritytech/polkadot/releases/download/${VERSION}/polkadot
 
 COPY runpolkadot.sh .
 
